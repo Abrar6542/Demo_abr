@@ -16,7 +16,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ec2-user/test1/vs_system
+            cd /home/ec2-user/var/www/html/index.html
             git pull
-            echo "CI CD WORKED at $(date)" > /home/ec2-user/ci_cd_test.txt
+            echo "CI CD WORKED at $(date)" > /home/ec2-user//var/www/html/index.html
 
