@@ -1,0 +1,22 @@
+name: Deploy to Amazon EC2
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user/test1/vs_system
+            git pull
+            echo "CI CD WORKED at $(date)" > /home/ec2-user/ci_cd_test.txt
+
